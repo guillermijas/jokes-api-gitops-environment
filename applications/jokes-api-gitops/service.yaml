@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jokes-api-service
+  namespace: default
+  labels:
+    app: jokes-api
+spec:
+  type: ClusterIP
+  selector:
+    app: jokes-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

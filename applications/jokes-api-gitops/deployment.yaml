@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jokes-api-ruby
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jokes-api
+  template:
+    metadata:
+      labels:
+        app: jokes-api
+    spec:
+      containers:
+      - name: app
+        replicas: 1
+        image: <image-name>:<tag>
+        command: sh -c "bundle exec rackup -p 3000"
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+            scheme: HTTP
+          periodSeconds: 10
+        resources:
+          limits:
+            cpu: 50m
+            memory: 50Mi
+          requests:
+            cpu: 30m
+            memory: 10Mi
