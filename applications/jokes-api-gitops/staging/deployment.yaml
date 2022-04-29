@@ -9,10 +9,12 @@ spec:
   selector:
     matchLabels:
       app: jokes-api
+      env: staging
   template:
     metadata:
       labels:
         app: jokes-api
+        env: staging
     spec:
       containers:
       - name: app

@@ -9,6 +9,8 @@ on:
         required: true
       image:
         required: true
+      environment:
+        required: true
 
 jobs:
   update-image-tag:
@@ -17,6 +19,7 @@ jobs:
     steps:
       - name: Wrap Input
         run: |
+          echo "ENV_TYPE=${{ github.event.inputs.app_repo }}" >> $GITHUB_ENV
           echo "APP_REPO=${{ github.event.inputs.app_repo }}" >> $GITHUB_ENV
           echo "TAG_NAME=${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV
           echo "IMAGE=${{ github.event.inputs.image }}" >> $GITHUB_ENV
@@ -42,7 +45,7 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKEN }}
           commit-message: Update ${{ env.APP_REPO }} version to ${{ env.TAG_NAME }}
           committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          author: GitHub <noreply@github.com>
           signoff: false
           branch: ${{ env.APP_REPO }}-${{ env.TAG_NAME }}
           delete-branch: true

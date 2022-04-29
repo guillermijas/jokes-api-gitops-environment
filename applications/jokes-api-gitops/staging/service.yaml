@@ -6,10 +6,12 @@ metadata:
   namespace: default
   labels:
     app: jokes-api
+    env: staging
 spec:
   type: ClusterIP
   selector:
     app: jokes-api
+    env: staging
   ports:
   - protocol: TCP
     port: 80
