@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jokes-api-ruby
+  name: jokes-api-gitops
   namespace: default
 spec:
   replicas: 1
