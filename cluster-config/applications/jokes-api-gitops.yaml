@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   interval: 5m0s
-  path: ./applications/jokes-api-gitops/production
+  path: ./applications/jokes-api-gitops
   prune: true
   sourceRef:
     kind: GitRepository

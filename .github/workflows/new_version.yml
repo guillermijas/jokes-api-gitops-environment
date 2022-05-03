@@ -23,11 +23,7 @@ jobs:
           echo "APP_REPO=${{ github.event.inputs.app_repo }}" >> $GITHUB_ENV
           echo "TAG_NAME=${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV
           echo "IMAGE=${{ github.event.inputs.image }}" >> $GITHUB_ENV
-
-          prod_branch="master-*"
-          [[ "${{ github.event.inputs.tag_name }}" =~ $prod_branch ]] && DEPLOY_ENV=production || DEPLOY_ENV=staging
-
-          echo "DEPLOY_FILE_PATH=applications/${{ github.event.inputs.app_repo }}/$DEPLOY_ENV/deployment.yaml" >> $GITHUB_ENV
+          echo "DEPLOY_FILE_PATH=applications/${{ github.event.inputs.app_repo }}/deployment.yaml" >> $GITHUB_ENV
       - name: "Checkout code"
         uses: actions/checkout@v3
       - name: "Install kubectl"  
