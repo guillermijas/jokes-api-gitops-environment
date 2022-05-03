@@ -20,7 +20,7 @@ spec:
         - sh
         - -c
         - bundle exec rackup -p 3000
-        image: guillermijas/jokes-api-gitops:master-8
+        image: guillermijas/jokes-api-gitops:master-9
         name: app
         ports:
         - containerPort: 3000
