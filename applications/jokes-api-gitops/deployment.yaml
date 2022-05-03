@@ -18,9 +18,11 @@ spec:
     spec:
       containers:
       - name: app
-        replicas: 1
         image: alpine:latest
-        command: sh -c "bundle exec rackup -p 3000"
+        command:
+        - sh
+        - -c
+        - "bundle exec rackup -p 3000"
         ports:
         - containerPort: 3000
           protocol: TCP
